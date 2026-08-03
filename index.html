@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Igel G. Cudiera — Digital Marketing VA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101B2D;
+    --panel:#16243B;
+    --panel-2:#1C2C46;
+    --paper:#F5F1E8;
+    --amber:#E8A33D;
+    --teal:#5FB3AA;
+    --muted:#8592A6;
+    --line:#26364F;
+    --line-soft:#2E3F5C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px; margin:0 auto; padding:0 32px;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px;
+    background:var(--amber);
+    border-radius:50%;
+    display:inline-block;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1; box-shadow:0 0 0 0 rgba(232,163,61,0.5);}
+    50%{opacity:0.6; box-shadow:0 0 0 6px rgba(232,163,61,0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow::before{animation:none;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(16,27,45,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  nav .brand{font-family:'Space Grotesk'; font-weight:600; font-size:15px; letter-spacing:0.02em;}
+  nav .brand span{color:var(--amber);}
+  nav ul{list-style:none; display:flex; gap:28px;}
+  nav a{color:var(--muted); text-decoration:none; font-size:13px; font-family:'IBM Plex Mono'; letter-spacing:0.04em; transition:color 0.2s;}
+  nav a:hover, nav a:focus-visible{color:var(--paper);}
+
+  /* HERO */
+  header.hero{
+    padding:110px 0 90px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    top:-40%; right:-10%;
+    width:520px; height:520px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(95,179,170,0.14) 0%, rgba(95,179,170,0) 70%);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:720px; position:relative;}
+  .hero .eyebrow{margin-bottom:22px;}
+  header.hero h1{
+    font-size:clamp(38px, 5.5vw, 58px);
+    line-height:1.05;
+    margin-bottom:22px;
+  }
+  header.hero .lead{
+    font-size:clamp(19px, 2.2vw, 23px);
+    color:var(--paper);
+    font-weight:400;
+    margin-bottom:14px;
+    max-width:620px;
+  }
+  header.hero .lead strong{color:var(--teal); font-weight:600;}
+  header.hero .sub{
+    color:var(--muted);
+    font-size:16px;
+    max-width:560px;
+  }
+  .hero-tags{display:flex; gap:10px; margin-top:32px; flex-wrap:wrap;}
+  .hero-tag{
+    font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.04em;
+    border:1px solid var(--line-soft); color:var(--muted);
+    padding:6px 12px; border-radius:20px;
+  }
+
+  section{padding:80px 0;}
+  section.alt{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:48px; max-width:640px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,34px); margin-bottom:12px;}
+  .section-head p{color:var(--muted); font-size:16px;}
+
+  /* SERVICES */
+  .service{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:0 28px;
+    padding:32px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .service:last-child{border-bottom:1px solid var(--line-soft);}
+  .service-num{
+    font-family:'Space Grotesk'; font-weight:600; font-size:15px;
+    color:var(--amber);
+    font-family:'IBM Plex Mono';
+  }
+  .service h3{font-size:21px; margin-bottom:16px; color:var(--paper);}
+  .spec-row{display:grid; grid-template-columns:130px 1fr; gap:6px 18px; margin-bottom:10px;}
+  .spec-label{
+    font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); padding-top:2px;
+  }
+  .spec-value{font-size:15px; color:var(--paper);}
+  .tools{display:flex; flex-wrap:wrap; gap:8px;}
+  .tool-pill{
+    font-family:'IBM Plex Mono'; font-size:12px;
+    background:var(--panel-2); color:var(--teal);
+    border:1px solid var(--line-soft);
+    padding:4px 10px; border-radius:4px;
+  }
+  .deliverable{
+    margin-top:6px; padding-top:14px; border-top:1px dashed var(--line-soft);
+  }
+  .deliverable .spec-value{color:var(--paper); font-weight:500;}
+
+  /* PROOF */
+  .proof-grid{display:flex; flex-direction:column; gap:26px;}
+  .proof-card{
+    background:var(--panel-2);
+    border:1px solid var(--line-soft);
+    border-radius:10px;
+    padding:30px 32px;
+    position:relative;
+  }
+  .stamp{
+    position:absolute;
+    top:26px; right:28px;
+    border:1.5px solid var(--amber);
+    color:var(--amber);
+    font-family:'IBM Plex Mono';
+    font-size:10.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border-radius:3px;
+    transform:rotate(4deg);
+    white-space:nowrap;
+  }
+  .proof-card h3{font-size:19px; margin-bottom:4px; padding-right:150px;}
+  .proof-sub{color:var(--teal); font-family:'IBM Plex Mono'; font-size:12px; margin-bottom:18px;}
+  .proof-row{margin-bottom:12px;}
+  .proof-row:last-child{margin-bottom:0;}
+  .proof-row .spec-label{display:block; margin-bottom:4px;}
+  .proof-row p{font-size:14.5px; color:#D9DEE7;}
+
+  /* CONTACT */
+  .contact-box{
+    text-align:center;
+    max-width:560px;
+    margin:0 auto;
+  }
+  .contact-box h2{font-size:clamp(28px,4vw,38px); margin-bottom:16px;}
+  .contact-box p{color:var(--muted); font-size:16px; margin-bottom:34px;}
+  .cta-btn{
+    display:inline-block;
+    background:var(--amber);
+    color:var(--ink);
+    font-family:'IBM Plex Mono';
+    font-weight:500;
+    font-size:14px;
+    letter-spacing:0.03em;
+    text-decoration:none;
+    padding:16px 34px;
+    border-radius:6px;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-btn:hover, .cta-btn:focus-visible{
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(232,163,61,0.25);
+  }
+  .contact-caption{
+    margin-top:18px; color:var(--muted); font-size:13px; font-family:'IBM Plex Mono';
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px 0;
+    text-align:center;
+    color:var(--muted);
+    font-family:'IBM Plex Mono';
+    font-size:12px;
+  }
+
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+    nav ul{gap:16px;}
+    nav a{font-size:11px;}
+    .service{grid-template-columns:1fr; gap:6px;}
+    .spec-row{grid-template-columns:1fr;}
+    .stamp{position:static; display:inline-block; transform:rotate(0); margin-bottom:10px;}
+    .proof-card h3{padding-right:0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">IGEL <span>·</span> CUDIERA</div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#proof">Proof</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Digital Marketing Virtual Assistant</div>
+    <h1>Igel G. Cudiera</h1>
+    <p class="lead">I manage ad accounts and tracking for <strong>small e-commerce &amp; local business owners.</strong></p>
+    <p class="sub">So you always know exactly what your ad spend is producing — not just what it costs.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Google Ads</span>
+      <span class="hero-tag">Meta Ads</span>
+      <span class="hero-tag">GA4 &amp; GTM</span>
+      <span class="hero-tag">Local &amp; Shopping Visibility</span>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Services</div>
+      <h2>What I take off your plate</h2>
+      <p>Four services, each ending in something specific you can check — not a vague "marketing help."</p>
+    </div>
+
+    <div class="service">
+      <div class="service-num">01</div>
+      <div>
+        <h3>Google Ads Campaign Setup &amp; Management</h3>
+        <div class="spec-row">
+          <div class="spec-label">Tasks</div>
+          <div class="spec-value">Keyword research, campaign structure, bid strategy setup, ongoing optimization.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Tools</div>
+          <div class="tools">
+            <span class="tool-pill">Google Ads</span>
+            <span class="tool-pill">Keyword Planner</span>
+            <span class="tool-pill">GA4</span>
+          </div>
+        </div>
+        <div class="deliverable spec-row">
+          <div class="spec-label">Deliverable</div>
+          <div class="spec-value">Live campaign with conversion tracking installed and a monthly performance report.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service">
+      <div class="service-num">02</div>
+      <div>
+        <h3>Meta Ads Campaign Management</h3>
+        <div class="spec-row">
+          <div class="spec-label">Tasks</div>
+          <div class="spec-value">Audience research, ad creative setup, pixel/events configuration, budget optimization.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Tools</div>
+          <div class="tools">
+            <span class="tool-pill">Meta Ads Manager</span>
+            <span class="tool-pill">Meta Events Manager</span>
+            <span class="tool-pill">Meta Pixel</span>
+            <span class="tool-pill">Meta Creative Hub</span>
+          </div>
+        </div>
+        <div class="deliverable spec-row">
+          <div class="spec-label">Deliverable</div>
+          <div class="spec-value">Running ad campaigns with tracked events and a bi-weekly results summary.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service">
+      <div class="service-num">03</div>
+      <div>
+        <h3>Website Tracking &amp; Analytics Setup</h3>
+        <div class="spec-row">
+          <div class="spec-label">Tasks</div>
+          <div class="spec-value">Tag and conversion setup, GA4 configuration, search performance review.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Tools</div>
+          <div class="tools">
+            <span class="tool-pill">Google Tag Manager</span>
+            <span class="tool-pill">GA4</span>
+            <span class="tool-pill">Search Console</span>
+          </div>
+        </div>
+        <div class="deliverable spec-row">
+          <div class="spec-label">Deliverable</div>
+          <div class="spec-value">Fully tracked website with a custom GA4 dashboard for ongoing monitoring.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service">
+      <div class="service-num">04</div>
+      <div>
+        <h3>Local &amp; E-Commerce Visibility Management</h3>
+        <div class="spec-row">
+          <div class="spec-label">Tasks</div>
+          <div class="spec-value">Business profile optimization, product feed setup, listing maintenance.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Tools</div>
+          <div class="tools">
+            <span class="tool-pill">Google Business Profile</span>
+            <span class="tool-pill">Google Merchant Center</span>
+            <span class="tool-pill">Meta Commerce Manager</span>
+          </div>
+        </div>
+        <div class="deliverable spec-row">
+          <div class="spec-label">Deliverable</div>
+          <div class="spec-value">Optimized business listing and product feed, plus a monthly visibility report.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="alt" id="proof">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Proof of Work</div>
+      <h2>How I actually work</h2>
+      <p>Practice projects built against fictional brands, to show the process end-to-end — not screenshots from paid client accounts.</p>
+    </div>
+
+    <div class="proof-grid">
+
+      <div class="proof-card">
+        <span class="stamp">Practice Project</span>
+        <h3>30-Day Content Calendar</h3>
+        <div class="proof-sub">Fictional brand: Verdant &amp; Co. — sustainable kitchen goods e-commerce</div>
+        <div class="proof-row">
+          <span class="spec-label">Context</span>
+          <p>A new e-commerce brand needed a full month of content planned across social and email before its next product launch.</p>
+        </div>
+        <div class="proof-row">
+          <span class="spec-label">Task</span>
+          <p>Mapped 30 days of content across Instagram, Facebook, and Email, rotating five content pillars — product education, behind-the-scenes, customer proof, sustainability story, and promotion.</p>
+        </div>
+        <div class="proof-row">
+          <span class="spec-label">Output</span>
+          <p>A working calendar with platform, format, hook, and CTA specified for every day, ready to hand to a scheduling tool.</p>
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <span class="stamp">Practice Project</span>
+        <h3>Search Ads Account Build</h3>
+        <div class="proof-sub">Fictional brand: Bright &amp; Co. — home goods e-commerce</div>
+        <div class="proof-row">
+          <span class="spec-label">Context</span>
+          <p>A simulated brand launch needed a Google Ads account built from zero ahead of a paid search push.</p>
+        </div>
+        <div class="proof-row">
+          <span class="spec-label">Task</span>
+          <p>Ran keyword research, structured three campaigns by product category, set an initial bid strategy, and mapped conversion actions.</p>
+        </div>
+        <div class="proof-row">
+          <span class="spec-label">Output</span>
+          <p>A documented campaign structure with conversion tracking mapped, plus a sample monthly performance report layout.</p>
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <span class="stamp">Practice Project</span>
+        <h3>GA4 &amp; GTM Tracking Build</h3>
+        <div class="proof-sub">Fictional brand: Northside Studio — local service business</div>
+        <div class="proof-row">
+          <span class="spec-label">Context</span>
+          <p>A simulated local business had no reliable way to see which pages and forms actually drove leads.</p>
+        </div>
+        <div class="proof-row">
+          <span class="spec-label">Task</span>
+          <p>Set up a GTM container, configured GA4 events and conversions, and reviewed Search Console for indexing gaps.</p>
+        </div>
+        <div class="proof-row">
+          <span class="spec-label">Output</span>
+          <p>A working tag map, a defined GA4 event list, and a one-page dashboard template for weekly checks.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-box">
+    <div class="eyebrow" style="justify-content:center;">Contact</div>
+    <h2>Want your ad accounts and tracking handled?</h2>
+    <p>Tell me what you're running now and what you're trying to hit — I'll tell you what's missing.</p>
+    <a class="cta-btn" href="mailto:igel.cudiera@example.com?subject=Let's%20talk%20about%20your%20ads%20%26%20tracking">Book a Free 15-Minute Consult</a>
+    <div class="contact-caption">igel.cudiera@example.com</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Igel G. Cudiera — Digital Marketing VA</div>
+</footer>
+
+</body>
+</html>
